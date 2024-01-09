@@ -1,37 +1,12 @@
 ---
 import Layout from "../layouts/Layout.astro"
+import Header from "../components/Header.astro"
 ---
 
-<Layout title="Welcome to Astro." description="test">
-  <nav>
-    <div class="logo-container">
-      <img src="/foca.svg" alt="logo dalion dev" width="100px" />
-      <h1>Dalion.dev</h1>
-    </div>
-    <ul>
-      <li><a href="">Home</a></li>
-      <li><a href="">About</a></li>
-      <li><a href="">Projects</a></li>
-    </ul>
-  </nav>
-
-  <h1>Hello World</h1>
+<Layout title="Home • Dalion.dev " description="test">
+  <Header />
+  <div class="text-text-gray">
+    <b>Hello World</b>
+    Hello World
+  </div>
 </Layout>
-
-<style>
-  .logo-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
-
-  nav {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-evenly;
-  }
-
-  
-
-</style>
