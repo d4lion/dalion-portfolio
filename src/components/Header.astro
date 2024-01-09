@@ -1,0 +1,32 @@
+---
+import Themetoggle from "./ThemeToggle.astro"
+import Searchtoggle from "./SearchToggle.astro"
+---
+
+<nav class="flex flex-row justify-between items-center text-text-gray">
+  <div class="flex gap-4 items-center">
+    <a href="">
+      <img src="/foca-grey.svg" alt="dalion logo" class="h-20" />
+    </a>
+    <div class="flex flex-col gap-1">
+      <h1 class="text-3xl font-bold text-erie-black">Dalion.dev</h1>
+      <ul
+        class="flex
+              flex-row
+              gap-2
+              text-[#d3862e]"
+      >
+        <a href="/home" class="hover:underline">Home</a>
+        <p class="text-gray-800">|</p>
+        <a href="/about" class="hover:underline">About</a>
+        <p class="text-gray-800">|</p>
+
+        <a href="/projects" class="hover:underline">Projects</a>
+      </ul>
+    </div>
+  </div>
+  <div class="flex flex-row items-center gap-2">
+    <Searchtoggle />
+    <Themetoggle />
+  </div>
+</nav>

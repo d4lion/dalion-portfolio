@@ -1,0 +1,32 @@
+<button
+  data-open-modal
+  disabled
+  class="flex h-9 w-9 items-center justify-center rounded-md ring-zinc-400 transition-all hover:ring-2 dark:text-slate-300"
+>
+  <a href="" class="open-dialog">
+    <svg
+      aria-label="search"
+      class="h-7 w-7"
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="1.5"
+    >
+      <path stroke="none" d="M0 0h24v24H0z"></path>
+      <path d="M3 10a7 7 0 1 0 14 0 7 7 0 1 0-14 0M21 21l-6-6"></path>
+    </svg>
+  </a>
+</button>
+
+<script>
+  // Todavía se encuentra en desarrollo, por el momento se encarga de evitar el refresco de pagina
+  const a_dialog = document.querySelector(".open-dialog")
+  a_dialog.addEventListener("click", (e) => {
+    e.preventDefault()
+  })
+</script>
