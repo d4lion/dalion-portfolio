@@ -3,6 +3,7 @@ import "@fontsource-variable/onest"
 // Supports weights 200-900
 import "@fontsource-variable/source-code-pro"
 import Header from "../components/layouts/Header.astro"
+import Footer from "../components/Footer.astro"
 
 interface Props {
   title: string
@@ -25,6 +26,7 @@ const { title, description } = Astro.props
     <section class="container">
       <Header />
       <slot />
+      <Footer />
     </section>
   </body>
 </html>
