@@ -1,5 +1,7 @@
 ---
 import "@fontsource-variable/onest"
+// Supports weights 200-900
+import "@fontsource-variable/source-code-pro"
 import Header from "../components/layouts/Header.astro"
 
 interface Props {
@@ -19,7 +21,7 @@ const { title, description } = Astro.props
     <link rel="shortcut icon" href="/foca-grey.svg" />
     <title>{title}</title>
   </head>
-  <body class="bg-flash-white dark:bg-erie-black text-pretty">
+  <body class="bg-flash-white dark:bg-erie-black text-pretty sm:m-0 m-3">
     <section class="container">
       <Header />
       <slot />
@@ -32,7 +34,7 @@ const { title, description } = Astro.props
     color-scheme: light dark;
   }
   html {
-    font-family: "Onest Variable", system-ui, sans-serif;
+    font-family: "Source Code Pro Variable", sans-serif;
   }
 
   .container {
@@ -41,4 +43,3 @@ const { title, description } = Astro.props
     height: 100vh;
   }
 </style>
-
