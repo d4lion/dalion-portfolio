@@ -5,7 +5,7 @@ import SunIcon from "../../public/sun.svg"
 <button
   type="button"
   id="toggle-theme"
-  class="relative h-9 w-9 rounded-md p-2 ring-zinc-400 transition-all hover:ring-2 change-theme dark:text-slate-300"
+  class="relative h-9 w-9 rounded-md p-2 ring-zinc-400 transition-all hover:ring-2 change-theme dark:text-slate-300 text-stone-700"
   aria-label="Toggle Dark Mode"
 >
   <svg
@@ -86,13 +86,26 @@ import SunIcon from "../../public/sun.svg"
 </button>
 
 <script>
+  // Se toma el html y se incerta el thema que se encuentre por defecto o el
+  const HTML_DOC = document.querySelector("html")
   const changeThemeButton = document.querySelector(".change-theme")
 
+  HTML_DOC.classList.add(localStorage.getItem("theme"))
+
+  // Se mantiene a la escucha de algun cambio por parte del boton de cambio de color
   changeThemeButton.addEventListener("click", (e) => {
-    if (document.querySelector("html").classList.contains("dark")) {
-      document.querySelector("html").classList.remove("dark")
+    if (HTML_DOC.classList.contains("dark")) {
+      HTML_DOC.classList.remove("dark")
+      HTML_DOC.classList.add("light")
+
+      // Al hacer un cambio de tema se guarda en el almacenamiento local el thema actual
+      localStorage.setItem("theme", "light")
     } else {
-      document.querySelector("html").classList.add("dark")
+      HTML_DOC.classList.add("dark")
+      HTML_DOC.classList.remove("light")
+
+      // Se guarda el nuevo tema del almacenamineto para evitar un cambio de color falso
+      localStorage.setItem("theme", "dark")
     }
   })
 </script>
