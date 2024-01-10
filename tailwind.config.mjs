@@ -10,7 +10,7 @@ export default {
         "outer-space": "#454C53",
         "slate-gray": "#72787F",
         "flash-white": "#FBFBFB",
-        "text-gray": "#3F4244",
+        "text-gray": "#c8c9cb",
       },
     },
   },
