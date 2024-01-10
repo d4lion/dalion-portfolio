@@ -6,24 +6,27 @@ import Searchtoggle from "../SearchToggle.astro"
 <nav class="flex flex-row justify-between items-center text-text-gray">
   <div class="flex gap-4 items-center">
     <a href="/">
-      <img src="/foca-grey.svg" alt="dalion logo" class="h-20" />
+      <img src="/foca-grey.svg" alt="dalion logo" class="sm:h-20 h-16" />
     </a>
     <div class="flex flex-col gap-1">
-      <h1 class="text-3xl font-[500] text-erie-black dark:text-text-gray">
+      <h1
+        class="sm:text-3xl text-xl font-[500] text-erie-black dark:text-text-gray"
+      >
         Dalion.dev
       </h1>
       <ul
         class="flex
               flex-row
               gap-2
-              text-[#d3862e]"
+              text-[#d3862e]
+              text-sm"
       >
         <a href="/" class="hover:underline">Home</a>
         <p class="text-gray-800 dark:text-text-gray">|</p>
         <a href="/about" class="hover:underline">About</a>
         <p class="text-gray-800 dark:text-text-gray">|</p>
 
-        <a href="/projects" class="hover:underline">Projects</a>
+        <a href="/blog" class="hover:underline">Blog</a>
       </ul>
     </div>
   </div>
