@@ -20,8 +20,8 @@ const Projects = [
     language: "Astro.js",
     description:
       "Huella Verde is an initiative that seeks to create courses through which young people can learn about the world of agronomy",
-    technologies: ["JavaScript", "Astro.js", "Markdown"],
-    link: "https://github.com/daliondev/huella-verde",
+    technologies: ["Preview", "JavaScript", "Astro.js", "Markdown"],
+    link: "https://huellaverde.netlify.app",
   },
 ]
 
