@@ -90,6 +90,8 @@ import SunIcon from "../../public/sun.svg"
   const HTML_DOC = document.querySelector("html")
   const changeThemeButton = document.querySelector(".change-theme")
 
+  localStorage.setItem("theme", "dark")
+
   HTML_DOC.classList.add(localStorage.getItem("theme"))
 
   // Se mantiene a la escucha de algun cambio por parte del boton de cambio de color
