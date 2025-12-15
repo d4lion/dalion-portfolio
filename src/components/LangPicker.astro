@@ -1,0 +1,103 @@
+---
+import { languages, defaultLang } from "../i18n/ui";
+---
+
+<div class="relative">
+  <button
+    type="button"
+    class="inline-flex justify-center w-full rounded-md border border-gray-300 px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:bg-erie-black dark:text-text-gray"
+    id="lang-picker"
+    aria-expanded="false"
+    aria-haspopup="true"
+  >
+    {(Astro.params.lang ?? defaultLang).toUpperCase()}
+    <svg
+      class="-mr-1 ml-2 h-5 w-5"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 20 20"
+      fill="currentColor"
+      aria-hidden="true"
+    >
+      <path
+        fill-rule="evenodd"
+        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+        clip-rule="evenodd"
+      />
+    </svg>
+  </button>
+
+  <div  id="lang-menu" class="dark:bg-erie-black dark:text-text-gray origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 closed" aria-orientation="vertical" aria-labelledby="lang-picker">
+    <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+      {Object.entries(languages).map(([lang, label]) => (
+        <a
+          href={`/${lang}/`}
+          class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-slate-100/50 hover:text-gray-900 dark:text-white"
+          role="menuitem"
+        >
+          {label}
+        </a>
+      ))}
+    </div>
+  </div>
+  <script>
+  const btn = document.getElementById('lang-picker');
+  const menu = document.getElementById('lang-menu');
+  const container = btn ? btn.parentElement : null;
+  let open = false;
+
+  function openMenu() {
+    if (!menu) return;
+    menu.classList.remove('closed');
+    menu.classList.add('open');
+    btn && btn.setAttribute('aria-expanded', 'true');
+    open = true;
+  }
+
+  function closeMenu() {
+    if (!menu) return;
+    menu.classList.remove('open');
+    menu.classList.add('closed');
+    btn && btn.setAttribute('aria-expanded', 'false');
+    open = false;
+  }
+
+  btn && btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    open ? closeMenu() : openMenu();
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!container) return;
+    // @ts-ignore
+    if (!container.contains(e.target)) {
+      closeMenu();
+    }
+  });
+
+  menu && menu.addEventListener('click', (e) => {
+    // @ts-ignore
+    const link = e.target.closest('a');
+    if (link) {
+      closeMenu();
+    }
+  });
+</script>
+</div>
+
+<style>
+  #lang-menu {
+    transform-origin: top right;
+    transition: opacity 150ms ease, transform 150ms ease, visibility 150ms;
+  }
+  #lang-menu.closed {
+    opacity: 0;
+    transform: scale(0.95);
+    visibility: hidden;
+    pointer-events: none;
+  }
+  #lang-menu.open {
+    opacity: 1;
+    transform: scale(1);
+    visibility: visible;
+  }
+</style>

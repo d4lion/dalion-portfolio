@@ -1,9 +1,15 @@
 ---
-import Layout from "../layouts/Layout.astro"
-import ProjectsCard from "../components/ProjectsCard.astro"
+import Layout from "../../layouts/Layout.astro"
+import ProjectsCard from "../../components/ProjectsCard.astro"
 
 // Constat projects
-import Projects from "../constants/Projects"
+import Projects from "../../constants/Projects"
+import { getLangFromUrl, useTranslations } from "../../i18n/utils"
+
+
+const lang = getLangFromUrl(new URL(Astro.url))
+const translate = useTranslations(lang)
+
 ---
 
 <Layout
@@ -13,17 +19,11 @@ import Projects from "../constants/Projects"
   <main>
     <section class="w-full text-raisin-black dark:text-text-gray mt-[4rem]">
       <p class="font-[600] text-2xl dark:text-white text-outer-space">
-        Hello World!
+        {translate("greeting")}
       </p>
-      <p class="mt-[2rem] text-sm font-[400]">
-        My name is <b class="dark:text-[#d3862e] underline">Daniel Martínez</b>,
-        Software development enthusiast, specialized in backend and frontend projects. 
-        Experienced in technologies such as Angular.js, React.js, TypeScript, JavaEE with 
-        Spring Boot, DBMS, and cloud providers such as GCP and AWS in the near future. 
-        Passionate about contributing and learning through Open Source projects.
-      </p>
+      <p class="mt-[2rem] text-sm font-[400]" set:html={translate("about_me")}/>
       <div class="mt-[1rem] flex flex-row">
-        <p class="text-base">Find me on</p>
+        <p class="text-base">{translate("find_me_on")}</p>
         <ul class="ml-[1rem] flex flow-row gap-3">
           <li class="dark:hover:text-gray-100 hover:text-gray-500">
             <a href="https://github.com/d4lion" target="_blank">
@@ -85,16 +85,15 @@ import Projects from "../constants/Projects"
     <hr class="my-5 dark:border-flash-white border-erie-black" />
 
     <section class="w-full flex flex-col gap-5">
-      <p class="font-[600] text-2xl dark:text-white text-outer-space mb-4">
-        <b class="font-[700] dark:text-[#d3862e]">Recent</b> Projects
-      </p>
+      <p class="font-[600] text-2xl dark:text-white text-outer-space mb-4" set:html={translate("recent_projects")}/>
+        
 
       {
         Projects.map((project) => (
           <ProjectsCard
             name={project.name}
             language={project.language}
-            description={project.description}
+            description={project.description[lang]}
             technologies={project.technologies}
             link={project.link}
           />
@@ -104,7 +103,7 @@ import Projects from "../constants/Projects"
         <a
           class="group flex flex-row gap-2 w-fit hover:font-[700] text-erie-black dark:text-flash-white"
           href="https://github.com/d4lion"
-          >All projects
+          >{translate("all_projects")}
           <svg
             width="24"
             height="24"
@@ -123,13 +122,9 @@ import Projects from "../constants/Projects"
     <hr class="my-5 dark:border-flash-white border-erie-black" />
     <section class="w-full">
       <!-- Titles -->
-      <p class="font-[700] text-2xl dark:text-white text-outer-space">Skills</p>
+      <p class="font-[700] text-2xl dark:text-white text-outer-space">{translate("skills")}</p>
 
-      <p class="text-erie-black mb-4 dark:text-text-gray">
-        These are some of the most <b class="dark:text-[#d3862e] underline"
-          >relevant</b
-        > in both front-end and back-end web development.
-      </p>
+      <p class="text-erie-black mb-4 dark:text-text-gray" set:html={translate("skills_description")} />
 
       <!-- Images of skills -->
       <ul
@@ -147,7 +142,7 @@ import Projects from "../constants/Projects"
             class="group-hover:-translate-y-4 transition-all -translate-y-2" 
           
             >
-              <g>
+              <g >
                 <path style="fill:#DB380E;" d="M253.464,94.869c-23.658,16.639-50.471,35.498-64.838,66.699   c-24.954,54.435,51.062,113.812,54.311,116.313c0.755,0.581,1.659,0.871,2.56,0.871c0.957,0,1.915-0.327,2.693-0.979   c1.509-1.262,1.937-3.406,1.031-5.152c-0.275-0.53-27.561-53.53-26.547-91.552c0.359-13.243,18.892-28.266,38.512-44.171   c17.97-14.568,38.34-31.079,50.258-50.394c26.164-42.516-2.916-84.322-3.213-84.74c-1.155-1.622-3.287-2.209-5.11-1.41   c-1.821,0.804-2.83,2.773-2.414,4.72c0.059,0.277,5.714,27.923-10.022,56.406C284.203,73.25,269.959,83.268,253.464,94.869z"/>
                 <path style="fill:#DB380E;" d="M353.137,113.617c1.669-1.257,2.159-3.55,1.15-5.38c-1.011-1.83-3.211-2.637-5.165-1.895   c-4.019,1.528-98.416,37.915-98.416,81.88c0,30.307,12.946,46.317,22.399,58.009c3.708,4.586,6.909,8.546,7.964,11.927   c2.97,9.743-4.066,27.353-7.025,33.317c-0.853,1.714-0.435,3.792,1.016,5.044c0.784,0.677,1.763,1.021,2.743,1.021   c0.834,0,1.672-0.248,2.396-0.752c1.623-1.128,39.667-28.026,32.844-60.433c-2.542-12.318-8.595-21.318-13.936-29.26   c-8.274-12.305-14.25-21.193-5.184-37.609C304.545,150.338,352.65,113.981,353.137,113.617z"/>
               </g>

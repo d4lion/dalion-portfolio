@@ -7,6 +7,7 @@ import sitemap from "@astrojs/sitemap"
 // https://astro.build/config
 export default defineConfig({
   site: "https://d4lion.site/",
+  output: "server",
   integrations: [
     tailwind(),
     preact({
