@@ -10,6 +10,13 @@ import { getLangFromUrl, useTranslations } from "../../i18n/utils"
 const lang = getLangFromUrl(new URL(Astro.url))
 const translate = useTranslations(lang)
 
+export function getStaticPaths() {
+  return [
+    { params: { lang: 'es' } },
+    { params: { lang: 'en' } }
+  ];
+}
+
 ---
 
 <Layout
